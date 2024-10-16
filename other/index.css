@@ -1,0 +1,8 @@
+
+function render2(){
+    console.log('other');
+    return `h1 class="text-6xl font-bold underline">
+    Hello world!
+  </h1>`
+}
+render2();
