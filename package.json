@@ -1,24 +1,25 @@
 {
-  "name": "webpack-tailwind-plugin",
+  "name": "purge-tailwind-plugin",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": "./src/index.mjs",
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "build:test": "NODE_ENV=production rspack -c fixtures/webpack.config.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.6",
+    "@rspack/core": "1.0.8",
+    "@rspack/cli": "1.0.8",
+    "prettier": "3.3.3"
+  },
   "dependencies": {
-    "autoprefixer": "*",
-    "css-loader": "^7.1.2",
-    "mini-css-extract-plugin": "^2.9.1",
-    "postcss": "*",
+    "postcss": "8.4.47",
     "postcss-loader": "^8.1.1",
     "style-loader": "^4.0.0",
-    "tailwindcss": "*",
-    "webpack": "*",
-    "webpack-cli": "*"
+    "tailwindcss": "3.4.14"
   }
 }

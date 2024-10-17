@@ -1,5 +1,5 @@
 import './index.css';
-import '../other/index';
+import '../share';
 function render(){
     console.log('xx');
     return `h1 class="text-3xl text-5xl font-bold underline">
