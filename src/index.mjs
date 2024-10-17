@@ -30,6 +30,7 @@ export default function purgeTailwindPlugin(config) {
                 ...entry_modules,
                 ...config.tailwindConfig.content,
               ].filter(Boolean);
+              const postcss_transform = postcss([ tailwind({...config.tailwindConfig,content:all_contents})]);
               // iterate all css asset in entry and inject entry_modules into tailwind content
               for (const file of entrypoint.getFiles()) {
                 const asset = compilation.getAsset(file);
@@ -37,7 +38,7 @@ export default function purgeTailwindPlugin(config) {
                   const content = asset.source.source();
                   // transform .css which contains tailwind mixin
                   // FIXME: add custom postcss config
-                  const transformed_css = await postcss([ tailwind({...config.tailwindConfig,content:all_contents})]).process(
+                  const transformed_css = await postcss_transform.process(
                     content
                   );
                   // FIXME: add sourcemap support 
