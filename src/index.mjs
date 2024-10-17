@@ -29,7 +29,7 @@ export default function purgeTailwindPlugin(config) {
               const all_contents = [
                 ...entry_modules,
                 ...config.tailwindConfig.content,
-              ];
+              ].filter(Boolean);
               // iterate all css asset in entry and inject entry_modules into tailwind content
               for (const file of entrypoint.getFiles()) {
                 const asset = compilation.getAsset(file);
