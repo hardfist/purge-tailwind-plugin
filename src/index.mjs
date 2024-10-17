@@ -28,7 +28,7 @@ export default function purgeTailwindPlugin(config) {
               }
               const all_contents = [
                 ...entry_modules,
-                ...config.tailwindConfig.content,
+                ...(config.tailwindConfig.content ?? []),
               ].filter(Boolean);
               const postcss_transform = postcss([ tailwind({...config.tailwindConfig,content:all_contents})]);
               // iterate all css asset in entry and inject entry_modules into tailwind content
