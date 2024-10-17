@@ -1,7 +1,7 @@
 import postcss from "postcss";
 import tailwind from "tailwindcss";
 /**
- *
+ * purge tailwind class according to module graph
  * @param {{tailwindConfig:any}} config
  * @returns
  */
@@ -18,6 +18,7 @@ export default function purgeTailwindPlugin(config) {
           { name: "process-tailwind" },
           async (_assets) => {
             for (const entrypoint of compilation.entrypoints.values()) {
+              // collect all the modules corresponding to specific entry
               const entry_modules = new Set();
               for (const chunk of entrypoint.chunks) {
                 let modules = compilation.chunkGraph.getChunkModules(chunk);
@@ -29,14 +30,17 @@ export default function purgeTailwindPlugin(config) {
                 ...entry_modules,
                 ...config.tailwindConfig.content,
               ];
+              // iterate all css asset in entry and inject entry_modules into tailwind content
               for (const file of entrypoint.getFiles()) {
                 const asset = compilation.getAsset(file);
                 if (file.endsWith(".css") && asset) {
                   const content = asset.source.source();
-                  console.log('content:',entrypoint.name,content);
+                  // transform .css which contains tailwind mixin
+                  // FIXME: add custom postcss config
                   const transformed_css = await postcss([ tailwind({...config.tailwindConfig,content:all_contents})]).process(
                     content
                   );
+                  // FIXME: add sourcemap support 
                   compilation.updateAsset(file,new compiler.webpack.sources.RawSource(transformed_css.css))
                 }
               }
