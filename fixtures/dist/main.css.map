@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["webpack:///./src/index.css"],"sourcesContent":["@tailwind base;\n@tailwind utilities;\nbody { \n    color: red;\n}"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA,C"}
