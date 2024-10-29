@@ -20,17 +20,23 @@ export default function purgeTailwindPlugin(config) {
             for (const entrypoint of compilation.entrypoints.values()) {
               // collect all the modules corresponding to specific entry
               let entry_modules = new Set();
+              const collectModules = (module) => {
+                if (module.modules) {
+                  for (const innerModule of module.modules) {
+                    collectModules(innerModule);
+                  }
+                } else {
+                  entry_modules.add(module.resource);
+                }
+              };
               for (const chunk of entrypoint.chunks) {
                 let modules = compilation.chunkGraph.getChunkModulesIterable(chunk);
                 modules.forEach((module) => {
-                  if(module.constructor?.name == "ConcatenatedModule"){
-                    debugger;
-                  }
-                  entry_modules.add(module.resource);
+                  collectModules(module);
                 });
               }
               // FIXME: use chunk modules when rspack supports module._modules
-              entry_modules = [...compilation.modules].map((x) => x.resource);
+              //entry_modules = [...compilation.modules].map((x) => x.resource);
               const all_contents = [
                 ...entry_modules,
                 ...(config.tailwindConfig.content ?? []),

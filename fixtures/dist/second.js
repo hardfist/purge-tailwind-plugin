@@ -42,7 +42,7 @@ __webpack_require__.m = __webpack_modules__;
 /************************************************************************/
 // webpack/runtime/compat_get_default_export
 (() => {
-// getDefaultExport function for compatibility with non-harmony modules
+// getDefaultExport function for compatibility with non-ESM modules
 __webpack_require__.n = function (module) {
 	var getter = module && module.__esModule ?
 		function () { return module['default']; } :
@@ -109,7 +109,7 @@ __webpack_require__.r = function(exports) {
 // webpack/runtime/rspack_version
 (() => {
 __webpack_require__.rv = function () {
-	return "1.0.8";
+	return "1.0.15-canary-f6208b08-20241024061655";
 };
 
 })();
@@ -262,16 +262,16 @@ loadCssChunkData(__webpack_require__.m, 0, "707");
 })();
 // webpack/runtime/rspack_unique_id
 (() => {
-__webpack_require__.ruid = "bundler=rspack@1.0.8";
+__webpack_require__.ruid = "bundler=rspack@1.0.15-canary-f6208b08-20241024061655";
 
 })();
 /************************************************************************/
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */var _share__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(83);
-/* harmony import */var _share__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_share__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */var _second_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(526);
+/* ESM import */var _share__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(83);
+/* ESM import */var _share__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_share__WEBPACK_IMPORTED_MODULE_0__);
+/* ESM import */var _second_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(526);
 
 
 })();
