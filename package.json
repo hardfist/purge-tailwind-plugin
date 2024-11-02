@@ -13,8 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.6",
-    "@rspack/core": "npm:@rspack/core-canary@1.0.15-canary-f6208b08-20241024061655",
-    "@rspack/cli": "npm:@rspack/cli-canary@1.0.15-canary-f6208b08-20241024061655",
+    "@rspack/core": "1.1.0-beta.0",
+    "@rspack/cli": "1.1.0-beta.0",
     "webpack": "5.95.0",
     "webpack-cli": "5.1.4",
     "prettier": "3.3.3"
